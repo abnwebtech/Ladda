@@ -4,27 +4,6 @@ module.exports = function(grunt) {
 	// Project configuration
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		meta: {
-			banner:
-				'/*!\n' +
-				' * Ladda <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd, HH:MM") %>)\n' +
-				' * http://lab.hakim.se/ladda\n' +
-				' * MIT licensed\n' +
-				' *\n' +
-				' * Copyright (C) 2017 Hakim El Hattab, http://hakim.se\n' +
-				' */'
-		},
-
-		uglify: {
-			main: {
-				options: {
-					banner: '<%= meta.banner %>\n'
-				},
-				files: {
-					'dist/ladda.min.js': 'js/ladda.js'
-				}
-			},
-		},
 
 		sass: {
 			main: {
@@ -97,7 +76,6 @@ module.exports = function(grunt) {
 
 	// Dependencies
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
@@ -106,7 +84,7 @@ module.exports = function(grunt) {
 	grunt.registerTask( 'default', [ 'js', 'css' ] );
 
 	// Theme task
-	grunt.registerTask( 'js', [ 'jshint', 'uglify' ] );
+	grunt.registerTask( 'js', [ 'jshint' ] );
 	grunt.registerTask( 'css', [ 'sass' ] );
 
 	// Serve presentation locally
